@@ -1,13 +1,13 @@
  
  
-/* eslint-disable react/prop-types */
 
-import { createContext, useState } from "react";
+
+import { useState, createContext } from "react";
+import PropTypes from 'prop-types';
 import runChat from "../config/gemini";
 
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const Context = createContext();
+const Context = createContext();
 
 const ContextProvider = (props) => {
 
@@ -34,8 +34,8 @@ const ContextProvider = (props) => {
 
      
     
-    // eslint-disable-next-line no-unused-vars
-    const onSent = async (prompt) => {
+   
+    const onSent = async () => {
 
         setResultData("")
         setLoading(true)
@@ -91,5 +91,9 @@ return (
     </Context.Provider>
 )
 }
+ContextProvider.propTypes = {
+    children: PropTypes.node.isRequired,
+};
 
 export default ContextProvider
+
